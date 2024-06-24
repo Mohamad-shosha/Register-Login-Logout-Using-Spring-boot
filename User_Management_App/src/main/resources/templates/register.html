@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+
+</head>
+<body>
+<section>
+
+    <div class="container p-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header text-center fs-5">Register Page</div>
+
+                    <th:block th:if="${session.msg}">
+                    <div class="alert alert-success text-center" role="alert">
+                        <span th:text="${session.msg}"></span>
+                    </div>
+                    <script th:inline="javascript">
+                        document.addEventListener('DOMContentLoaded', function() {
+                            setTimeout(function() {
+                                document.querySelector('.alert').style.display = 'none';  // Hide the message
+                                /* AJAX call to remove the msg attribute from the session */
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('GET', '/removeMsgFromSession', true);
+                                xhr.send();
+                            }, 5000);  // Remove the message after 5 seconds (adjust as needed)
+                        });
+    </script>
+                </th:block>
+
+                    </script>
+                    </th:block>
+
+
+
+                    <div class="card-body">
+                        <form action="createUser" method="post">
+                            <div class="mb-3">
+                                <label>Enter Full Name</label> <input type="text" name="fullName" class="form-control">
+
+                            </div>
+                            <div class="mb-3">
+                                <label>Enter Email</label> <input type="text" name="email"
+                                                                  class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Enter Address</label> <input type="text" name="address"
+                                                                    class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label>Enter Qualification</label> <input type="text"
+                                                                          name="qualification" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label>Enter Password</label> <input type="text"
+                                                                     name="password" class="form-control">
+                            </div>
+                            <button class="btn btn-primary col-md-12">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</section>
+
+
+
+</body>
+</html>
